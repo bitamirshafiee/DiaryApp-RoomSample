@@ -1,15 +1,12 @@
 package com.bitamirshafiee.roomsample.diarylist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.bitamirshafiee.roomsample.R
 import com.bitamirshafiee.roomsample.util.getViewModelFactory
 import kotlinx.android.synthetic.main.fragment_diary_list.*
