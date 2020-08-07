@@ -1,9 +1,7 @@
 package com.bitamirshafiee.roomsample.data.local
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
-import com.bitamirshafiee.roomsample.data.local.AppDataBase
 
 class DiaryRepository(appDataBase: AppDataBase) {
 
