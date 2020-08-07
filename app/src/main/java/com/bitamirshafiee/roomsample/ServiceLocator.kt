@@ -23,5 +23,5 @@ object ServiceLocator {
         Room.databaseBuilder(
             context.applicationContext,
             AppDataBase::class.java, "Diaries.db"
-        ).build()
+        ).allowMainThreadQueries().build()
 }
