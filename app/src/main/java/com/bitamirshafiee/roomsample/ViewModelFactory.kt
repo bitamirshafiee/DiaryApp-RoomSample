@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.bitamirshafiee.roomsample.data.local.DiaryRepository
 import com.bitamirshafiee.roomsample.diarylist.DiaryListViewModel
-import com.bitamirshafiee.roomsample.diarylist.EditNewDiaryViewModel
+import com.bitamirshafiee.roomsample.addeditdiary.AddEditDiaryViewModel
 import java.lang.IllegalArgumentException
 
 @Suppress("UNCHECKED_CAST")
@@ -24,8 +24,10 @@ class ViewModelFactory(
         when {
             isAssignableFrom(DiaryListViewModel::class.java) ->
                 DiaryListViewModel(diaryRepository)
-            isAssignableFrom(EditNewDiaryViewModel::class.java) ->
-                EditNewDiaryViewModel(diaryRepository)
+            isAssignableFrom(AddEditDiaryViewModel::class.java) ->
+                AddEditDiaryViewModel(
+                    diaryRepository
+                )
             else ->
                 throw IllegalArgumentException("UNKNOWN ViewModel class: ${modelClass.name}")
         }
