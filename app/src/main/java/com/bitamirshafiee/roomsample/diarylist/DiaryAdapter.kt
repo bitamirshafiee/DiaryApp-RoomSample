@@ -1,7 +1,6 @@
 package com.bitamirshafiee.roomsample.diarylist
 
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
@@ -11,10 +10,12 @@ import com.bitamirshafiee.roomsample.R
 import com.bitamirshafiee.roomsample.data.local.DiaryEntity
 import kotlinx.android.synthetic.main.item_diary.view.*
 
-class DiaryAdapter : PagedListAdapter<DiaryEntity, ViewHolder>(DiaryDiffCallBack()) {
+class DiaryAdapter(val onClick: (DiaryEntity) -> Unit) : PagedListAdapter<DiaryEntity, DiaryAdapter.ViewHolder>(DiaryDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view = layoutInflater.inflate(R.layout.item_diary, parent, false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -23,19 +24,12 @@ class DiaryAdapter : PagedListAdapter<DiaryEntity, ViewHolder>(DiaryDiffCallBack
 
     }
 
-    class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(diary: DiaryEntity) {
-            view.diary_text.text = diary.text
-        }
-
-        companion object {
-            fun from(parent: ViewGroup): RecyclerView.ViewHolder {
-
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.item_diary, parent, false)
-
-                return ViewHolder(view)
+            view.diary_text_view.text = diary.text
+            view.root_view.setOnClickListener {
+                onClick(diary)
             }
         }
     }
@@ -50,6 +44,4 @@ class DiaryDiffCallBack : DiffUtil.ItemCallback<DiaryEntity>() {
     override fun areContentsTheSame(oldItem: DiaryEntity, newItem: DiaryEntity): Boolean {
         return oldItem == newItem
     }
-
-
 }
