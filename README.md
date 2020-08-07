@@ -9,6 +9,7 @@ This is what you'll see in this sample about room:
 - update diary
 - delete diary
 - get list of diaries
+- show diary list by using Paging Library
 
 and some best practices:
 
