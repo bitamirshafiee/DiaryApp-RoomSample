@@ -1,9 +1,6 @@
 package com.bitamirshafiee.roomsample.diarylist
 
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.paging.Config
 import androidx.paging.PagedList
 import androidx.paging.toLiveData
@@ -23,14 +20,6 @@ class DiaryListViewModel(private val diaryRepository: DiaryRepository) : ViewMod
                 maxSize = 100
             )
         )
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    class Factory(
-        private val repository: DiaryRepository
-    ) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>) =
-            DiaryListViewModel(repository) as T
     }
 
 }
