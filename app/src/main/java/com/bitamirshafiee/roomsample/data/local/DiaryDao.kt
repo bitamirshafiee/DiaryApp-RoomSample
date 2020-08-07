@@ -10,7 +10,7 @@ interface DiaryDao{
     @Query("SELECT * FROM diaries")
     fun getDiaries() : LiveData<List<DiaryEntity>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDiary(diaryEntity: DiaryEntity)
 
     @Update
